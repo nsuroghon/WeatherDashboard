@@ -62,8 +62,8 @@ for (var i = 0; i < forecastArray.length; i++) {
     uiContainer.innerHTML = "";
   }
 
-  saveToLS(data) {
-    localStorage.setItem("city", JSON.stringify(data));
+  saveToLS(allData) {
+    localStorage.setItem("city", JSON.stringify(allData));
   }
 
   getFromLS() {
@@ -93,11 +93,11 @@ const button = document.getElementById("submit");
 button.addEventListener("click", () => {
   const currentVal = search.value;
 
-  ft.getCurrent(currentVal).then((data) => {
+  ft.getCurrent(currentVal).then((allData) => {
     //call a UI method//
-    ui.populateUI(data);
+    ui.populateUI(allData);
     //call saveToLS
-    ui.saveToLS(data);
+    ui.saveToLS(allData);
   });
 });
 
