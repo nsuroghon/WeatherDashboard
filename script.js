@@ -23,13 +23,11 @@ class Fetch {
 class UI {
   constructor() {
     this.uiContainer = document.getElementById("content");
-    //this.uiContainer2 = document.getElementById("fiveDay")
+    this.uiContainer2 = document.getElementById("fiveDay")
   }
 
 
-//NEED TO CONVERT MAX TEMP BELOW TO C OR F
   populateUI(allData) { 
-//console.log(allData[0])
 console.log(allData[1])
     this.uiContainer.innerHTML = `
 
@@ -39,13 +37,17 @@ console.log(allData[1])
       <p id="humidity">Humidity: ${allData[0].main.humidity}%</p>
       <p id="wind">Wind Speed: ${allData[0].wind.speed}mph</p>
     </div>`;
+
   var forecastArray = allData[1].list
   for(var i=0; i < forecastArray.length; i++) {
+    var item = forecastArray[i];
     console.log(forecastArray[i]);
 
+  if (item.dt_txt.indexOf("12:00:00") !== -1) {
+    console.log(item.dt_txt);
+  }
   }
 
-   // this.uiContainer2.innerHTML = ``
   }
 
   clearUI() {
