@@ -28,7 +28,7 @@ class UI {
 
 
   populateUI(allData) { 
-console.log(allData[1])
+//console.log(allData[1])
     this.uiContainer.innerHTML = `
 
     <div id="content">
@@ -41,10 +41,20 @@ console.log(allData[1])
   var forecastArray = allData[1].list
   for(var i=0; i < forecastArray.length; i++) {
     var item = forecastArray[i];
-    console.log(forecastArray[i]);
+    //console.log(forecastArray[i]);
 
   if (item.dt_txt.indexOf("12:00:00") !== -1) {
-    console.log(item.dt_txt);
+    var fiveDayTemp = forecastArray[i].main.temp_max;
+    console.log(fiveDayTemp);
+    this.uiContainer2.innerHTML = `
+    <div id="fiveDay">
+      <h3>Five Day Forecast</h3>    
+      <p>${fiveDayTemp}</p>
+      <p>${fiveDayTemp}</p>
+      <p>${fiveDayTemp}</p>
+      <p>${fiveDayTemp}</p>
+      <p>${fiveDayTemp}</p>
+    </div>`
   }
   }
 
