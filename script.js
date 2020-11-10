@@ -38,27 +38,25 @@ class UI {
       <p id="wind">Wind Speed: ${allData[0].wind.speed}mph</p>
     </div>`;
 
-  var forecastArray = allData[1].list
-  for(var i=0; i < forecastArray.length; i++) {
-    var item = forecastArray[i];
-    //console.log(forecastArray[i]);
+var h3 = document.createElement('h3');
+h3.textContent = 'Five Day Forecast';
 
-  if (item.dt_txt.indexOf("12:00:00") !== -1) {
+this.uiContainer2.appendChild(h3);
+
+var forecastArray = allData[1].list;
+for (var i = 0; i < forecastArray.length; i++) {
+  var item = forecastArray[i];
+  //console.log(forecastArray[i]);
+
+  if (item.dt_txt.indexOf('12:00:00') !== -1) {
     var fiveDayTemp = forecastArray[i].main.temp_max;
     console.log(fiveDayTemp);
-    this.uiContainer2.innerHTML = `
-    <div id="fiveDay">
-      <h3>Five Day Forecast</h3>    
-      <p>${fiveDayTemp}</p>
-      <p>${fiveDayTemp}</p>
-      <p>${fiveDayTemp}</p>
-      <p>${fiveDayTemp}</p>
-      <p>${fiveDayTemp}</p>
-    </div>`
+    var p = document.createElement('p');
+    p.textContent = fiveDayTemp;
+    this.uiContainer2.appendChild(p);
   }
-  }
-
-  }
+}
+}
 
   clearUI() {
     uiContainer.innerHTML = "";
